@@ -53,12 +53,20 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _temp = 0;
-  int currentIndex = 0;
+  int _currentIndex = 0; //IF bluetooth device not connected => -1 
+  int _index = 0;
+  int stepMax = 0;
+  PageController pageController = PageController();
+
+  void onTapped(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
+    pageController.jumpToPage(index);
+  }
 
   final elements1 = [
-    "0°C",
-    "1°C",
-    "2°C",
+    "0°C", "1°C", "2°C", "3°C", "4°C", "5°C", "6°C"
   ];
   int? selectedIndex1 = 0;
 
@@ -69,7 +77,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ))
         .toList();
   }
-  
+
   void _increaseTemp() {
     setState(() {
       _temp++;
@@ -96,7 +104,7 @@ class _MyHomePageState extends State<MyHomePage> {
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         
-        title: Text(widget.title, style: const TextStyle(fontFamily: 'Lobster'),),
+        title: Text("Smartbox", style: const TextStyle(fontFamily: 'Lobster'),),
         centerTitle: true,
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
@@ -104,7 +112,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
-        child: currentIndex == 0 ? Column(
+        child: _currentIndex == 0 ? Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             CircularPercentIndicator(
@@ -112,16 +120,17 @@ class _MyHomePageState extends State<MyHomePage> {
               backgroundColor: Colors.grey.shade300,
               lineWidth: 10,
               progressColor: _temp < 30 ? Colors.blue.shade400 : Colors.red.shade400, 
-              percent: 0.7,
+              percent: 0.6,
               circularStrokeCap: CircularStrokeCap.round,
               animation: true,
+              animationDuration: 1200,
               center: Text(
                 '$_temp°C',
                  style: Theme.of(context).textTheme.headline4,
               ),
             ),
             DirectSelect(
-              itemExtent: 35.0,
+              itemExtent: 50.0,
               selectedIndex: selectedIndex1!,
               child: MySelectionItem(
                 isForList: false,
@@ -165,7 +174,52 @@ class _MyHomePageState extends State<MyHomePage> {
             )
           ],
         ) 
-      : const Center(child: Text('SETTINGS', style: TextStyle(fontSize: 60))),
+      : Stepper(
+          currentStep: _index,
+          onStepCancel: () {
+            if (_index > 0) {
+              setState(() {
+                _index -= 1;
+              });
+            }
+          },
+          onStepContinue: () {
+              setState(() {
+              _index += 1;
+          });
+            
+          },
+          onStepTapped: (int index) {
+            setState(() {
+              _index = index;
+            });
+          },
+          steps: <Step>[
+            Step(
+              title: const Text('Step 1: Insert chip'),
+              isActive: _index > 0,
+              content: Container(
+                  alignment: Alignment.centerLeft,
+                  child: const Text('Make sure your chip is connected to your smartbox')),
+            ),
+            Step(
+              title: const Text('Step 2: Insert chip'),
+              isActive: _index > 0,
+              content: Container(
+                  alignment: Alignment.centerLeft,
+                  child: const Text('Make sure your chip is connected to your smartbox')),
+            ),
+            Step(
+              title: const Text('Step 3: Insert chip'),
+              isActive: _index > 0,
+              content: Container(
+                  alignment: Alignment.centerLeft,
+                  child: const Text('Make sure your chip is connected to your smartbox')),
+            ),
+          ],
+          ),
+          
+
       ),
       bottomNavigationBar: BottomNavigationBar(items: const[
         BottomNavigationBarItem(
@@ -175,18 +229,22 @@ class _MyHomePageState extends State<MyHomePage> {
         BottomNavigationBarItem(
           label: 'SETTINGS',
           icon: Icon(Icons.settings)
-        )
+        ),
       ],
-      currentIndex: currentIndex,
+      currentIndex: _currentIndex,
       onTap: (int index){
         setState(() {
-          currentIndex = index;
+          _currentIndex = index;
         });
       },
       ),
+      
+
+
     );
   }
 }
+
 
 class MySelectionItem extends StatelessWidget {
   final String? title;
@@ -230,4 +288,3 @@ class MySelectionItem extends StatelessWidget {
     );
   }
 }
-

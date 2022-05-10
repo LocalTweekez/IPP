@@ -29,8 +29,12 @@ environment:
 dependencies:
   percent_indicator: ^3.4.0
   direct_select: "2.0.0"
+  flutter_bluetooth_serial: ^0.3.2
   flutter:
     sdk: flutter
+
+#  flutter_bluetooth_serial: ^0.2.2
+#  syncfusion_flutter_sliders: ^18.3.47-beta
 
 
   # The following adds the Cupertino Icons font to your application.
