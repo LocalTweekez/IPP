@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:direct_select/direct_select.dart';
 import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
+import './BluetoothPage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,16 +18,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Smart Matlåda',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
+      theme: ThemeData( 
         primarySwatch: Colors.blue,
       ),
       home: const MyHomePage(title: 'Smart Matlåda'), 
@@ -36,16 +28,6 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
   final String title;
 
   @override
@@ -185,10 +167,17 @@ class _MyHomePageState extends State<MyHomePage> {
             }
           },
           onStepContinue: () {
+            if(_index == 2){
               setState(() {
-              _index += 1;
-          });
-            
+                _index -= 1;
+              });
+            }
+            else{
+              setState(() {
+                _index += 1;
+              });
+            }
+
           },
           onStepTapped: (int index) {
             setState(() {
@@ -199,12 +188,13 @@ class _MyHomePageState extends State<MyHomePage> {
             Step(
               title: const Text('Step 1: Insert chip'),
               isActive: _index > 0,
-              content: Container(
+              content: 
+                Container(
                   alignment: Alignment.centerLeft,
                   child: const Text('Make sure your chip is connected to your smartbox')),
             ),
             Step(
-              title: const Text('Step 2: Insert chip'),
+              title: const Text('Step 2: Connect to bluetooth'),
               isActive: _index > 0,
               content: Container(
                   alignment: Alignment.centerLeft,
@@ -218,9 +208,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: const Text('Make sure your chip is connected to your smartbox')),
             ),
           ],
-          ),
-          
-
+        ),
       ),
       bottomNavigationBar: BottomNavigationBar(items: const[
         BottomNavigationBarItem(
@@ -228,23 +216,35 @@ class _MyHomePageState extends State<MyHomePage> {
           icon: Icon(Icons.home)
         ),
         BottomNavigationBarItem(
-          label: 'SETTINGS',
+          label: 'SETUP',
           icon: Icon(Icons.settings)
+        ),
+        BottomNavigationBarItem(
+          label: 'BLUETOOTH',
+          icon: Icon(Icons.bluetooth)
         ),
       ],
       currentIndex: _currentIndex,
       onTap: (int index){
         setState(() {
           _currentIndex = index;
+          // ignore: avoid_print
+          print(index);
         });
+        if(index == 2) {
+          setState(() {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const BluetoothPage()));
+          });
+        }
+        ;
       },
       ),
-      
-
-
     );
   }
 }
+
 
 
 class MySelectionItem extends StatelessWidget {

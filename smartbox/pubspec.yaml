@@ -30,6 +30,7 @@ dependencies:
   percent_indicator: ^3.4.0
   direct_select: "2.0.0"
   flutter_bluetooth_serial: ^0.3.2
+  scoped_model: ^1.0.1
   flutter:
     sdk: flutter
 
