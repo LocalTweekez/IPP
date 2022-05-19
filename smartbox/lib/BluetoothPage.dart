@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
 
-import './DiscoveryPage.dart';
 
 class BluetoothPage extends StatefulWidget {
 const BluetoothPage({Key? key}) : super(key: key);
@@ -12,11 +11,16 @@ const BluetoothPage({Key? key}) : super(key: key);
   _BluetoothPage createState() => _BluetoothPage();
 }
 
+double tempArduino = 20;
+
+
 class _BluetoothPage extends State<BluetoothPage> {
   BluetoothState _bluetoothState = BluetoothState.UNKNOWN;
 
   String _address = "...";
   final String _name = "...";
+  bool toCelcius = true;
+
 
   @override
   void initState() {
@@ -33,7 +37,10 @@ class _BluetoothPage extends State<BluetoothPage> {
 
     Future.doWhile(() async {
       // Wait if adapter not enabled
-      await FlutterBluetoothSerial.instance.isEnabled;
+      // ignore: unrelated_type_equality_checks
+      if(FlutterBluetoothSerial.instance.isEnabled == false){
+        return false;
+      }
       await Future.delayed(const Duration(milliseconds: 0xDD));
       return true;
     }).then((_) {
@@ -66,75 +73,53 @@ class _BluetoothPage extends State<BluetoothPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Flutter Bluetooth Serial'),
+        title: const Text('Bluetooth Connection'),
       ),
-      body: Container(
-        child: ListView(
-          children: <Widget>[
-            Divider(),
-            ListTile(title: const Text('General')),
-            SwitchListTile(
-              title: const Text('Enable Bluetooth'),
-              value: _bluetoothState.isEnabled,
-              onChanged: (bool value) {
-                // Do the request and update with the true value then
-                future() async {
-                  // async lambda seems to not working
-                  if (value)
-                    await FlutterBluetoothSerial.instance.requestEnable();
-                  else
-                    await FlutterBluetoothSerial.instance.requestDisable();
+      body: ListView(
+        children: <Widget>[
+          SwitchListTile(
+            title: const Text('Enable Bluetooth'),
+            value: _bluetoothState.isEnabled,
+            onChanged: (bool value) {
+              // Do the request and update with the true value then
+              future() async {
+                // async lambda seems to not working
+                if (value) {
+                  await FlutterBluetoothSerial.instance.requestEnable();
+                } else {
+                  await FlutterBluetoothSerial.instance.requestDisable();
                 }
-
-                future().then((_) {
-                  setState(() {});
-                });
+              }
+              future().then((_) {
+                setState(() {});
+              });
+            },
+          ),
+          ListTile(
+            title: const Text('Bluetooth status'),
+            subtitle: Text(_bluetoothState.toString()),
+            trailing: 
+            ElevatedButton(
+              child: const Text('Settings'),
+              onPressed: () {
+                FlutterBluetoothSerial.instance.openSettings();
+                print(tempArduino);
               },
             ),
-            ListTile(
-              title: const Text('Bluetooth status'),
-              subtitle: Text(_bluetoothState.toString()),
-              trailing: ElevatedButton(
-                child: const Text('Settings'),
-                onPressed: () {
-                  FlutterBluetoothSerial.instance.openSettings();
-                },
-              ),
-            ),
-            ListTile(
-              title: const Text('Local adapter address'),
-              subtitle: Text(_address),
-            ),
-            ListTile(
-              title: const Text('Local adapter name'),
-              subtitle: Text(_name),
-              onLongPress: null,
-            ),
-            Divider(),
-            ListTile(
-              title: TextButton(
-                  child:
-                      const Text('Connect to paired device to chat with ESP32'),
-                  onPressed: () async {
-                    final BluetoothDevice selectedDevice =
-                        await Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return DiscoveryPage();
-                        },
-                      ),
-                    );
-
-                    if (selectedDevice != null) {
-                      print('Discovery -> selected ' + selectedDevice.address);
-                    } 
-                    else {
-                      print('Discovery -> no device selected');
-                    }
-                  }),
-            ),
-          ],
-        ),
+          ),
+          ListTile(
+            title: const Text('Local adapter address'),
+            subtitle: Text(_address),
+          ),
+          ListTile(
+            title: const Text('Local adapter name'),
+            subtitle: Text(_name),
+            onLongPress: null,
+          ),
+          const ListTile(
+            subtitle: Text("Appen tillverkad av grupp 20 för IPP-kursen, VT2022."),
+          ),
+        ],
       ),
     );
   }
