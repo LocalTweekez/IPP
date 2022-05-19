@@ -2,17 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:direct_select/direct_select.dart';
-<<<<<<< HEAD
-import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
 import './BluetoothPage.dart';
-=======
-import './BluetoothPage.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
-
-double _temp = tempArduino;
-bool toCelcius = true;
->>>>>>> d6333c646d6621a3ade071b4e88baa5cf1e9f422
 
 void main() {
   runApp(const MyApp());
@@ -45,6 +35,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 
+bool toCelcius = true;
+double _temp = 0;
 
 class _MyHomePageState extends State<MyHomePage> {
   int _currentIndex = 0; //IF bluetooth device not connected => -1 
@@ -244,15 +236,9 @@ class _MyHomePageState extends State<MyHomePage> {
               title: const Text('Step 1: Insert chip'),
               isActive: _index > 0,
               content: 
-<<<<<<< HEAD
                 Container(
                   alignment: Alignment.centerLeft,
                   child: const Text('Make sure your chip is connected to your smartbox')),
-=======
-                  Container(
-                    alignment: Alignment.centerLeft,
-                    child: const Text('Make sure your chip is connected to your smartbox')),
->>>>>>> d6333c646d6621a3ade071b4e88baa5cf1e9f422
             ),
             Step(
               title: const Text('Step 2: Connect to bluetooth'),
