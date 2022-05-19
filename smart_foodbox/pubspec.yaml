@@ -1,8 +1,4 @@
-<<<<<<<< HEAD:smart_foodbox/pubspec.yaml
-name: smart_lunch_box
-========
 name: smartbox
->>>>>>>> 6060f4d36c97a9875557a7407f75031d41da131e:smartbox/pubspec.yaml
 description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
@@ -33,11 +29,6 @@ environment:
 dependencies:
   percent_indicator: ^3.4.0
   direct_select: "2.0.0"
-<<<<<<<< HEAD:smart_foodbox/pubspec.yaml
-  flutter:
-    sdk: flutter
-
-========
   flutter_bluetooth_serial: ^0.3.2
   flutter:
     sdk: flutter
@@ -45,7 +36,6 @@ dependencies:
 #  flutter_bluetooth_serial: ^0.2.2
 #  syncfusion_flutter_sliders: ^18.3.47-beta
 
->>>>>>>> 6060f4d36c97a9875557a7407f75031d41da131e:smartbox/pubspec.yaml
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -89,17 +79,10 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-<<<<<<<< HEAD:smart_foodbox/pubspec.yaml
-  fonts:
-    - family: Lobster
-      fonts:
-        - asset: fonts\Lobster-Regular.ttf
-========
   # fonts:
   #   - family: Lobster
   #     fonts:
   #       - asset: fonts\Lobster-Regular.ttf
->>>>>>>> 6060f4d36c97a9875557a7407f75031d41da131e:smartbox/pubspec.yaml
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf
