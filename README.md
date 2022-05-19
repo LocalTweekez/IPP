@@ -1,5 +1,5 @@
-# IPP
-# Deltagare för kodning: Serhad Y., Filip N., och Yakoub D.
+# IPP VT2022 - Smartbox
+# Deltagare från grupp 20 för kodning: Serhad Y., Filip N., och Yakoub D.
 
 OBS att p.g.a versionsuppdateringar så har jag (SERHAD) behövt under vissa tillfällen ladda upp kod som egentligen är skrivet av andra i gruppen.
 Dessa tillfällen är
