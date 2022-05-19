@@ -1,15 +1,11 @@
-# IPP
+# IPP VT2022 - Smartbox
+# Deltagare från grupp 20 för kodning: Serhad Y., Filip N., och Yakoub D.
 
-* Connect to bluetooth / disconnect
+OBS att p.g.a versionsuppdateringar så har jag (SERHAD) behövt under vissa tillfällen ladda upp kod som egentligen är skrivet av andra i gruppen.
+Dessa tillfällen är
 
-* Live temperaturcheck (HARDWARE ISSUE)
-    - ska sensor vara turned on i mikron?
- 
-* Kod för arduino ELLER raspberry pi
-
-* Notifications (HARDWARE ISSUE)
-    - notis när maten är klar?
-
-* Celsius -> farenheit
-
-* Breadcrumbs
+    - Första commit-upplägget för appen av FILIP, där han skrev koden för main.dart med implementation av huvudsidan med 
+      temperaturindikatorn och knappen för inställningar vid botten av skärmen.
+    - Senaste commit-upplägget av YAKOUB, där han skrev koden för Arduinofilen "Matl_da_Arduino.ino". 
+      Denna kod har lagts upp av mig (SERHAD) i main-branchen p.g.a felhantering av versioner. 
+      Dock ser man detta i "new branch" att YAKOUB la upp denna kod.
