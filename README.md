@@ -1,5 +1,5 @@
 # IPP VT2022 - Smartbox
-# Deltagare från grupp 20 för kodning: Serhad Y., Filip N., och Yakoub D.
+# Deltagare från grupp 20 för kodning: Serhad Y., Filip N., Alexander Y., och Yakoub D.
 
 En filtrerad branch av hela projektet ligger i "merged"-branchen. Notera att appen fortfarande inte är klar och saknar vissa funktioner.
 Framtida patch-uppdatering lär inkludera:
@@ -20,4 +20,5 @@ Dessa tillfällen är:
       huvudsidan med temperaturindikatorn och knappen för inställningar vid botten av skärmen.
     - Senaste commit-upplägget av YAKOUB, där han skrev koden för Arduinofilen "Matl_da_Arduino.ino". 
       Denna kod har lagts upp av mig (SERHAD) i main-branchen p.g.a felhantering av versioner. 
-      Dock ser man detta i "new branch" att YAKOUB la upp denna kod.
+      Dock ser man detta i "new branch" att (YAKOUB) la upp denna kod. Koden rättad av (ALEXANDER)
+      från teknisk fysik. 
