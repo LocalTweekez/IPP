@@ -1,4 +1,4 @@
-#define sensorPin A0
+#define sensorPin A0 //Definierad som analog input 0
 
 void setup() {
   // Hur snabbt kommunikationen mellan Arduino och datorn kommer vara. Just nu är den på default som är Baud rate 9600:
