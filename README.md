@@ -20,4 +20,5 @@ Dessa tillfällen är:
       huvudsidan med temperaturindikatorn och knappen för inställningar vid botten av skärmen.
     - Senaste commit-upplägget av YAKOUB, där han skrev koden för Arduinofilen "Matl_da_Arduino.ino". 
       Denna kod har lagts upp av mig (SERHAD) i main-branchen p.g.a felhantering av versioner. 
-      Dock ser man detta i "new branch" att YAKOUB la upp denna kod.
+      Dock ser man detta i "new branch" att YAKOUB la upp denna kod. Koden rättad av (ALEXANDER)
+      från teknisk fysik. 
