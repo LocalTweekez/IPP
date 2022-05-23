@@ -1,5 +1,5 @@
 # IPP VT2022 - Smartbox
-# Deltagare från grupp 20 för kodning: Serhad Y., Filip N., och Yakoub D.
+# Deltagare från grupp 20 för kodning: Serhad Y., Filip N., Alexander Y., och Yakoub D.
 
 En filtrerad branch av hela projektet ligger i "merged"-branchen. Notera att appen fortfarande inte är klar och saknar vissa funktioner.
 Framtida patch-uppdatering lär inkludera:
