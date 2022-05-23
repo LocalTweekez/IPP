@@ -1,11 +1,11 @@
-# IPP VT2022 - Smartbox
-# Deltagare från grupp 20 för kodning: Serhad Y., Filip N., och Yakoub D.
+3.5 Versionshantering - Github
+Under tillverkningen av appen användes Github för versionshantering, som är utmärkt för att kollektivt ladda upp, bearbeta och ladda ner källkod. Githubs versionshantering är även praktisk för att enkelt lagra, se förändringar och kommentera vad dessa förändringar gör. Det simplistiska praktikaliteten av Github möjliggör smidig hantering av källkod och har genom projektets arbetsgång varit i stor nyttja till gruppen för skapandet av appen. 
 
-OBS att p.g.a versionsuppdateringar så har jag (SERHAD) behövt under vissa tillfällen ladda upp kod som egentligen är skrivet av andra i gruppen.
-Dessa tillfällen är
+Att ladda ner källkod kallas att göra en “pull request”, att ladda upp kallas för “push requests” och att hålla sin kod uppdaterad kallas för “fetching”. Dessa funktioner är inbyggd i Microsofts lanserade IDE; Visual Studio. Vid varje större förändring av kod valdes att “push-a” koden ut till gruppens lagringsutrymme (repository) som gruppen har i Github, samt att “pull-a” koden vid nedladdning för andra enheter. Dessa funktioner kan även utföras i en inbyggd terminal (t.ex cmd i Windows eller terminal i macOS) med hjälp av kortkommandon som github själva har fixat, eller i githubs egna desktop-version som går att ladda ner.
 
-    - Första commit-upplägget för appen av FILIP, där han skrev koden för main.dart med implementation av huvudsidan med 
-      temperaturindikatorn och knappen för inställningar vid botten av skärmen.
-    - Senaste commit-upplägget av YAKOUB, där han skrev koden för Arduinofilen "Matl_da_Arduino.ino". 
-      Denna kod har lagts upp av mig (SERHAD) i main-branchen p.g.a felhantering av versioner. 
-      Dock ser man detta i "new branch" att YAKOUB la upp denna kod.
+Innehållet för gruppens repository har de nödvändiga externa paketen som krävs för appens funktionaliteter. Dessa externa paket (även kallad dependencies) som används kallas percent_indicator, direct_select och flutter_bluetooth_serial. 
+
+Notera att denna repository har tre stycken grenar, i github-terminologi kallas dem “branches”, varav branchen “merged” är alltså det slutliga produkten av appens tillverkning. Endast de relevanta filerna/mapparna för appens uppbyggnad lagras i denna branch. 
+
+Appens uppbyggnad finns i mappen “smartbox” vilket är skapad av Flutter vid kompilering och test-körning av kod. En Flutter-projekt skapas genom kortkommandot “flutter create [namn på projekt]” som kan angivas i terminalen inbyggd i Visual Studio som exempel. Flutter skapar en android-mapp, en iOS-, library-, test-, websida-, samt en windows-mapp med en specifik .yaml-dokument kallad “pubspec.yaml”, vilket används i huvudsakligen för nedladdning av tillägg. De önskade paketen skrivs ned under rubriken “dependencies” i dokumentet och i terminalen anges “flutter pub get” för nedladdning av dessa paket.
+
